@@ -122,7 +122,7 @@ def donate_books(request):
 
         donor = Donor(DONOR_NAME=donors_name,DONOR_ID=donors_id,HOW_MANY_COPIES=copies,Book=book)
         donor.save() 
-        message = "added success"
+        message = "Donated successfully"
         return render(request,'add_books.html',{"message":message}) 
 
     else:
