@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<style>
+    .display_books_table{
+        margin: 100px;
+       
+
+    }
+    body{
+        background-color:#b7d7e8;
+    }
+
+</style>
+
+<div class="add_books_form">
+    {% if msg %}
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        <strong>{{msg}}</strong>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    {% endif %}
+
+
+<div class="display_books_table">
+    <h2 style="font-family: cursive; text-align:center">Readers in the Library</h2>
+
+
+    <table class="table table-dark table-striped table-hover  table-bordered border-success"
+        style="text-align: center;">
+        <thead>
+            <tr>
+                
+                <th scope="col">Readers ID</th>
+                <th scope="col">Readers Name</th>
+                <th scope="col">Books Name</th>
+                <th scope="col">Borrow Date</th>
+               
+            </tr>
+        </thead>
+        <tbody>
+
+            {% for reader in readers %}
+            <tr>
+                <td>{{reader.READERS_ID}}</td>
+                <td>{{reader.READERS_NAME}}</td>
+                <td>{{reader.Book.BOOKS_NAME}}</td>
+                <td>{{reader.BORROW_DATE}}</td>
+                
+
+            </tr>
+            {% endfor %}
+        </tbody>
+
+    </table>
+</div>
+{% endblock %}

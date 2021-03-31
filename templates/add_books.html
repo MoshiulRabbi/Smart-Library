@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<style>
+    .add_books_form {
+
+        width: 400px;
+        margin-left: 35%;
+        margin-top: 3%;
+       
+    }
+</style>
+
+<div class="add_books_form">
+    {% if message %}
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        <strong>{{message}}</strong>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    {% endif %}
+   
+    <form class="row g-3" action="{% url 'add_books' %}" method="POST">
+        {% csrf_token %}
+        <h2 style="font-family:cursive;">Register Your Books Here</h2>
+        <div class="col-12">
+            <label class="form-label"><b>ISBN NUMBER</b></label>
+            <input type="text" class="form-control" name="ISBN_NUM" placeholder="ISBN NUMBER">
+        </div>
+        <div class="col-12">
+            <label  class="form-label"><b>Book's Name</b></label>
+            <input type="text" class="form-control" name="BOOKS_NAME" placeholder="Books Name">
+        </div>
+        <div class="col-12">
+            <label  class="form-label"><b>Author's Name</b></label>
+            <input type="text" class="form-control" name="AUTHORS" placeholder="Author1, Author2, Author3">
+        </div>
+        <div class="form-group col-md-6">
+            <label><b>Copies</b></label>
+            <input type="number"  class="form-control" name="AVAILABLE_COPIES" placeholder="Copies">
+        </div>
+
+        <div class="col-12">
+            <button type="submit" class="btn btn-primary">Add Book</button>
+        </div>
+    </form>
+</div>
+
+{% endblock %}

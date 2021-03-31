@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<style>
+    .add_books_form {
+
+        width: 400px;
+        margin-left: 35%;
+        margin-top: 3%;
+       
+    }
+</style>
+
+<div class="add_books_form">
+
+   
+    <form class="row g-3" action="{% url 'borrow' book.id %}" method="POST">
+        {% csrf_token %}
+        <h2 style="font-family:cursive;">Borrow</h2>
+        <div class="col-12">
+            <label class="form-label"><b>Readers ID</b></label>
+            <input type="text" class="form-control" name="READERS_ID" placeholder="Readers ID">
+        </div>
+        <div class="col-12">
+            <label  class="form-label"><b>Reader's Name</b></label>
+            <input type="text" class="form-control" name="READERS_NAME" placeholder="Readers Name">
+        </div>
+        <div class="col-12">
+            <label  class="form-label"><b>Book Name</b></label>
+            <input type="text" class="form-control" name="READERS_NAME" value="{{ book.BOOKS_NAME }}"readonly>
+        </div>
+
+        
+
+
+        <div class="col-12">
+            <button type="submit" class="btn btn-primary">Get This Book</button>
+        </div>
+    </form>
+</div>
+
+{% endblock %}

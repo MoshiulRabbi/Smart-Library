@@ -1,0 +1,124 @@
+<!DOCTYPE html>{% load static %}
+<html lang="en">
+<head>
+    <title>Login</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+<!--===============================================================================================-->  
+    <link rel="icon" type="image/png" href="{% static 'lp/images/icons/favicon.ico' %}"/>
+<!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{% static 'lp/vendor/bootstrap/css/bootstrap.min.css' %}">
+<!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{% static 'lp/fonts/font-awesome-4.7.0/css/font-awesome.min.css' %}">
+<!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{% static 'lp/vendor/animate/animate.css' %}">
+<!--===============================================================================================-->  
+    <link rel="stylesheet" type="text/css" href="{% static 'lp/vendor/css-hamburgers/hamburgers.min.css' %}">
+<!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{% static 'lp/vendor/select2/select2.min.css' %}">
+<!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{% static 'lp/css/util.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'lp/css/main.css' %}">
+<!--===============================================================================================-->
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="{% url 'home' %}">Library</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="{% url 'home' %}">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'login' %}">Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'about' %}">About</a>
+                    </li>
+                    
+                </ul>
+            </div>
+        </div>
+    </nav>
+    
+    <div class="limiter">
+        <div class="container-login100">
+            <div class="wrap-login100">
+                <div class="login100-pic js-tilt" data-tilt>
+                    <img src="{% static 'lp/images/img-01.png' %}" alt="IMG">
+                </div>
+
+
+
+                <form class="login100-form validate-form" action="{% url 'login' %}" method="post">
+                    {% csrf_token %}
+                    <span class="login100-form-title">
+                        Login
+                    </span>
+
+                    {% if messege %}
+                        <div class="alert alert-warning" role="alert"><strong>{{messege}}</strong></div>
+                    {% endif %} 
+
+                    <div class="wrap-input100 validate-input" data-validate = "Username required">
+                        <input class="input100" type="text" name="username" placeholder="username">
+                        <span class="focus-input100"></span>
+                        <span class="symbol-input100">
+                            <i class="fa fa-user" aria-hidden="true"></i>
+                        </span>
+                    </div>
+
+                    <div class="wrap-input100 validate-input" data-validate = "Enter Password">
+                        <input class="input100" type="password" name="password" placeholder="Password">
+                        <span class="focus-input100"></span>
+                        <span class="symbol-input100">
+                            <i class="fa fa-lock" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    
+                    <div class="container-login100-form-btn">
+                        <button class="login100-form-btn"  type="submit" name="login" >
+                            Login
+                        </button>
+                    </div>
+
+
+                    <div class="text-center p-t-136">
+                        <a class="txt2" href="#">
+                            Contact admin to access login
+                            <i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
+                        </a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+    
+
+    
+<!--===============================================================================================-->  
+    <script src="{% static 'lp/vendor/jquery/jquery-3.2.1.min.js' %}"></script>
+<!--===============================================================================================-->
+    <script src="{% static 'lp/vendor/bootstrap/js/popper.js' %}"></script>
+    <script src="{% static 'lp/vendor/bootstrap/js/bootstrap.min.js' %}"></script>
+<!--===============================================================================================-->
+    <script src="{% static 'lp/vendor/select2/select2.min.js' %}"></script>
+<!--===============================================================================================-->
+    <script src="{% static 'lp/vendor/tilt/tilt.jquery.min.js' %}"></script>
+    <script >
+        $('.js-tilt').tilt({
+            scale: 1.1
+        })
+    </script>
+<!--===============================================================================================-->
+    <script src="{% static 'lp/js/main.js' %}"></script>
+
+</body>
+</html>
