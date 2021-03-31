@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<style>
+    .add_books_form {
+
+        width: 400px;
+        margin-left: 35%;
+        margin-top: 3%;
+       
+    }
+</style>
+
+<div class="add_books_form">
+    {% if message %}
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        <strong>{{message}}</strong>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    {% endif %}
+   
+    <form class="row g-3" action="{% url 'donate_books' %}" method="POST">
+        {% csrf_token %}
+        <center>
+        <h2 style="font-family:cursive;">Donate Book</h2>
+        </center>
+        <div class="col-12">
+            <label class="form-label"><b>Donors ID</b></label>
+            <input type="text" class="form-control" name="DONORS_ID" placeholder="Donors ID">
+        </div>
+        <div class="col-12">
+            <label  class="form-label"><b>Donors's Name</b></label>
+            <input type="text" class="form-control" name="DONORS_NAME" placeholder="Donors Name">
+        </div>
+        <div class="col-12">
+            <label class="form-label"><b>ISBN NUMBER</b></label>
+            <input type="text" class="form-control" name="ISBN_NUM" placeholder="ISBN NUMBER">
+        </div>
+        <div class="col-12">
+            <label  class="form-label"><b>Book's Name</b></label>
+            <input type="text" class="form-control" name="BOOKS_NAME" placeholder="Books Name">
+        </div>
+        <div class="col-12">
+            <label  class="form-label"><b>Author's Name</b></label>
+            <input type="text" class="form-control" name="AUTHORS" placeholder="Author1, Author2, Author3">
+        </div>
+        <div class="form-group col-md-6">
+            <label><b>Copies</b></label>
+            <input type="number"  class="form-control" name="COPIES" placeholder="Copies">
+        </div>
+
+        <div class="col-12">
+            <button type="submit" class="btn btn-primary">Add Book</button>
+        </div>
+    </form>
+</div>
+
+{% endblock %}

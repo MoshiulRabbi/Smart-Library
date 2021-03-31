@@ -22,6 +22,9 @@
     <form class="row g-3" action="{% url 'add_books' %}" method="POST">
         {% csrf_token %}
         <h2 style="font-family:cursive;">Register Your Books Here</h2>
+        <center>
+        <h3 style="font-family:cursive;">Or Donate <a href="{% url 'donate_books' %}">Here</a></h3>
+    </center>
         <div class="col-12">
             <label class="form-label"><b>ISBN NUMBER</b></label>
             <input type="text" class="form-control" name="ISBN_NUM" placeholder="ISBN NUMBER">

@@ -21,3 +21,15 @@ class Readers(models.Model):
 
     def __str__(self):
         return self.READERS_NAME
+
+
+
+class Donor(models.Model):
+    DONOR_ID = models.CharField(max_length=30)
+    DONOR_NAME = models.CharField(max_length=30)
+    HOW_MANY_COPIES = models.IntegerField()
+    DONATE_DATE = models.DateTimeField(auto_now_add=True,blank=True)
+    Book = models.ForeignKey(Books,on_delete=models.CASCADE,related_name="Donor")
+
+    def __str__(self):
+        return self.DONOR_NAME

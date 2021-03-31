@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<style>
+    .display_books_table{
+        margin: 100px;
+       
+
+    }
+    body{
+        background-color:#b7d7e8;
+    }
+
+</style>
+
+<div class="add_books_form">
+    {% if msg %}
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        <strong>{{msg}}</strong>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    {% endif %}
+
+
+<div class="display_books_table">
+    <h2 style="font-family: cursive; text-align:center">Donors in the Library</h2>
+
+
+    <table class="table table-dark table-striped table-hover  table-bordered border-success"
+        style="text-align: center;">
+        <thead>
+            <tr>
+                
+                <th scope="col">Donor's ID</th>
+                <th scope="col">Donor Name</th>
+                <th scope="col">Book Name</th>
+                <th scope="col">Copies</th>
+                <th scope="col">Donate Date</th>
+               
+            </tr>
+        </thead>
+        <tbody>
+
+            {% for donor in donor %}
+            <tr>
+                <td>{{donor.DONOR_ID}}</td>
+                <td>{{donor.DONOR_NAME}}</td>
+                <td>{{donor.Book.BOOKS_NAME}}</td>
+                <td>{{donor.HOW_MANY_COPIES}}</td>
+                <td>{{donor.DONATE_DATE}}</td>
+                
+
+            </tr>
+            {% endfor %}
+        </tbody>
+
+    </table>
+</div>
+{% endblock %}
