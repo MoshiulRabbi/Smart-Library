@@ -110,20 +110,26 @@ def donate_books(request):
         books_name=books_name.upper()
         authors=authors.upper()
 
-        #if donated book already exist in the library
-        if Books.objects.filter(ISBN_NUM=isbn_num).exists():
-            book=Books.objects.get(ISBN_NUM=isbn_num)
-            book.AVAILABLE_COPIES+=int(copies)
-            book.save()
+
+        if donors_id == '' or isbn_num == '':
+            message = "Please Enter All the data"
+            return render(request,'donate_books.html',{"message":message})
         else:
-            book=Books.objects.create(ISBN_NUM=isbn_num,BOOKS_NAME=books_name,AUTHORS=authors,AVAILABLE_COPIES=copies)
-            book.save()
+
+            #if donated book already exist in the library
+            if Books.objects.filter(ISBN_NUM=isbn_num).exists():
+                book=Books.objects.get(ISBN_NUM=isbn_num)
+                book.AVAILABLE_COPIES+=int(copies)
+                book.save()
+            else:
+                book=Books.objects.create(ISBN_NUM=isbn_num,BOOKS_NAME=books_name,AUTHORS=authors,AVAILABLE_COPIES=copies)
+                book.save()
 
 
-        donor = Donor(DONOR_NAME=donors_name,DONOR_ID=donors_id,HOW_MANY_COPIES=copies,Book=book)
-        donor.save() 
-        message = "Donated successfully"
-        return render(request,'add_books.html',{"message":message}) 
+            donor = Donor(DONOR_NAME=donors_name,DONOR_ID=donors_id,HOW_MANY_COPIES=copies,Book=book)
+            donor.save() 
+            message = "Donated successfully"
+            return render(request,'donate_books.html',{"message":message}) 
 
     else:
         return render(request,"donate_books.html")
