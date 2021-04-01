@@ -5,6 +5,8 @@ from django.http import HttpResponse, request
 from .models import Books,Readers,Donor
 from django.contrib.auth.decorators import login_required
 from django.urls import reverse
+from django.db.models import Q
+
 
 # Create your views here.
 
@@ -44,15 +46,13 @@ def add_books(request):
                 message="Book added successfully !!"
 
             return render(request,'add_books.html',{"message":message}) 
-     
     else:
         return render(request,'add_books.html')
 
  
 @login_required(login_url='login')
 def display_books(request):
-    b=Books.objects.all()
-
+    b = Books.objects.filter(Q(AVAILABLE_COPIES__gt=0))
     query = request.GET.get('q')
     if query:
         qb = b.filter(BOOKS_NAME__contains=query)
@@ -136,10 +136,7 @@ def donate_books(request):
 
 
 
-
-
 @login_required(login_url='login')
 def display_donors(request):
     donor = Donor.objects.all()
-
     return render(request,"display_donors.html",{"donor":donor})
