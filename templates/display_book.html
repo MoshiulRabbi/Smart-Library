@@ -49,7 +49,7 @@
                 <td>{{book.BOOKS_NAME}}</td>
                 <td>{{book.AUTHORS}}</td>
                 <td>{{book.AVAILABLE_COPIES}}</td>
-                <td><a href="{% url 'borrow' book.id %}">Borrow</a></td>
+                <td><a href="{% url 'borrow' book.ISBN_NUM %}">Borrow</a></td>
             </tr>
             {% endfor %}
         </tbody>

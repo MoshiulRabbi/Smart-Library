@@ -63,8 +63,8 @@ def display_books(request):
 
 
 @login_required(login_url='login')
-def borrow(request,pk):
-    Book = Books.objects.get(id=pk)
+def borrow(request,isbn):
+    Book = Books.objects.get(ISBN_NUM=isbn)
 
     if request.method == 'POST':
         READERS_ID = request.POST['READERS_ID']

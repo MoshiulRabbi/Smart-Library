@@ -14,7 +14,7 @@
 <div class="add_books_form">
 
    
-    <form class="row g-3" action="{% url 'borrow' book.id %}" method="POST">
+    <form class="row g-3" action="{% url 'borrow' book.ISBN_NUM %}" method="POST">
         {% csrf_token %}
         <h2 style="font-family:cursive;">Borrow</h2>
         <div class="col-12">
