@@ -72,7 +72,7 @@ def borrow(request,isbn):
 
         Book.AVAILABLE_COPIES-=1
         Book.save()
-        reader = Readers(READERS_ID = READERS_ID,READERS_NAME= READERS_NAME,Book = Book)
+        reader = Readers(READERS_NAME=READERS_NAME,READERS_ID=READERS_ID,Book=Book)
         reader.save()
         msg = "Readers got the book succesfully"
 
