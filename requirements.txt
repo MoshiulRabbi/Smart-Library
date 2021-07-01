@@ -1,4 +1,4 @@
-asgiref==3.3.4
+asgiref==3.4.1
 Django==3.1.12
 django-mssql-backend==2.8.1
 pyodbc==4.0.30
